@@ -1,0 +1,204 @@
+/* CSS styles */ *{box-sizing:border-box} 
+html,body{height:100%} 
+body{ margin:0; font:14px/1.45 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans",sans-serif; color:var(--text); background:var(--bg); } .top-bar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; /* stays above images/content */ } /* Top header */ .header{background:white;;color:#fff} .header__row{display:grid; grid-template-columns: 1fr auto 1fr;grid-template-areas: "logo search tools";align-items:center;gap:12px;padding:10px 16px;} .logo{font-weight:;letter-spacing:.3px;white-space:nowrap; grid-column: 1;} .logo img{max-width:20%;display:flex;justify-self:center;} /* Search */ .search{grid-area:search;display:flex;justify-self:center; max-width: 500px; width: auto; margin: 0 ; grid-column: 2;} .search input{width:100%;padding:10px 12px;border:1px solid transparent;border-radius:6px 0 0 6px;outline:none} .search button{padding:10px 14px;border:0;background:#ffffff;border-radius:0 6px 6px 0;cursor:pointer} .search input:focus{border-color:var(--focus);} .header__tools{display:flex;gap:3rem;justify-self:center;font-size:12px; grid-column: 3;} .tool{opacity:.9;color:black} .tool strong{display:block;font-size:13px} .tool a{color:black;text-decoration:none;} /* Secondary nav */ .nav{background:#ffffff;;border-bottom: 2px solid black; border-color: black} .nav__row{display:flex;gap:3.2rem;justify-self:center;padding:8px 16px;overflow:auto; justify-content: center} .nav a{color:#000000;text-decoration:none;white-space:nowrap;opacity:.95} body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f8f8f8; } .container { display: flex; gap: 40px; justify-self:center; margin-top:10rem; } .left-column img { width: 100%; max-width: 700px; border-radius: 10px; } .right-column { max-width: 700px; } .sizes { display: flex; gap: 10px; margin: 15px 0; } .size-btn { padding: 8px 16px; border: 1px solid #333; border-radius: 6px; cursor: pointer; background: white; } .add-to-bag { margin-top: 20px; padding: 12px 20px; font-size: 16px; border: none; background: #333; color: white; border-radius: 8px; cursor: pointer; width:86% }
+.accordion {
+  margin-top: 2rem;
+  border-top: 1px solid #ddd;
+}
+
+.thumbnail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 700px; /* same width as your main image */
+}
+
+.thumbnail-grid img {
+  width: 100%;
+  aspect-ratio: 1 / 1;     /* forces perfect squares */
+  object-fit: cover;       /* crops nicely if needed */
+  border-radius: 8px;
+  background: #eee;        /* optional placeholder background */
+cursor:pointer;
+}
+
+#lightbox{
+position:fixed;
+z-index: 1000;
+top: 0;
+width: 100%;
+height:100%;
+background-color: rgba(0,0,0,0.8)
+}
+
+#lightbox.active{
+display:flex;
+justify-content:center;
+align-items: center;}
+
+
+
+.accordion-item {
+  border-bottom: 1px solid #ddd;
+}
+
+.accordion-header {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 1.2rem 0;
+  text-align: left;
+  font-size: 0.9rem;
+  letter-spacing: 0.15rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accordion-icon {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  padding-right: 1rem;
+}
+
+.accordion-item.active .accordion-content {
+  max-height: 200px; /* enough for text */
+}
+
+.accordion-item.active .accordion-icon {
+  transform: rotate(45deg); /* turns + into × shape */
+}
+
+#lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  display: none;               /* start hidden */
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;               /* above everything else */
+}
+
+#lightbox.active {
+  display: flex;
+}
+
+/* Image inside lightbox */
+#lightbox img.lightbox-img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+  user-select: none;
+}
+
+/* Prev / Next buttons */
+#lightbox .lightbox-prev,
+#lightbox .lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: white;
+  font-size: 2.2rem;
+  padding: 12px 18px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: 0.2s ease;
+  user-select: none;
+}
+
+#lightbox .lightbox-prev:hover,
+#lightbox .lightbox-next:hover {
+  background: rgba(255,255,255,0.35);
+}
+
+#lightbox .lightbox-prev {
+  left: 40px;
+}
+
+#lightbox .lightbox-next {
+  right: 40px;
+}
+
+/* Make gallery images look clickable */
+.main-img,
+.thumbnail-grid img {
+  cursor: pointer;
+  transition: 0.2s opacity;
+}
+
+.main-img:hover,
+.thumbnail-grid img:hover {
+  opacity: 0.8;
+}
+
+#cart-count {
+  display: none;      /* hide on start */
+  background: black;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 10px;
+  margin-left: 4px;
+}
+.cart-wrapper {
+  position: relative;
+}
+
+.cart-dropdown {
+  position: absolute;
+  right: 0;
+  top: 35px;
+  background: white;
+  width: 260px;
+  padding: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  border-radius: 10px;
+  display: none;
+  z-index: 3000;
+}
+
+.cart-wrapper:hover .cart-dropdown {
+  display: block;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.cart-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-right: 10px;
+}
+
+.cart-item-info {
+  flex: 1;
+}
+
+.cart-item-info h4 {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+
